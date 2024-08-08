@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import Body from "./Components/Body";
 
 function App() {
   return (
-    <h1>Netflix-GPT</h1>
+    <Body/>
   );
 }
 
