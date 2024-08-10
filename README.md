@@ -2,6 +2,16 @@
 
 -Create React App
 -Configured TailwindCSS
+-Login
+-Routing
+-SignIn/SignUp
+-Form Validation
+-useRef hook
+-Firebase setup
+-Deploying out app to production
+-Create Sign up user account
+-Implement Sign In user Api
+-Created redux store with userSlice
 
 # Features
 
