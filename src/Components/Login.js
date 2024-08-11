@@ -1,12 +1,16 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
-import { LOGIN_BG_URL } from '../utils/Constants';
+import { DP_URL, LOGIN_BG_URL } from '../utils/Constants';
 import Validate from '../utils/Validate';
 import {auth} from '../utils/Firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -22,10 +26,17 @@ const Login = () => {
         if(isSignUp){
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                // Signed up 
                 const user = userCredential.user;
-                // console.log(user);
-                // ...
+                updateProfile(auth.currentUser, {
+                    displayName: name.current.value, photoURL:"https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+                  })
+                  .then(() => {
+                    dispatch();
+                    navigate("/browse");
+                  })
+                  .catch((error) => {
+                  });
+                
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,7 +51,7 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                // ...
+                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -50,6 +61,7 @@ const Login = () => {
         }
     }
 
+    const name= useRef(null);
     const email= useRef(null);
     const password= useRef(null);
 
@@ -65,7 +77,8 @@ const Login = () => {
             </h1>
 
             {isSignUp && (<input 
-            type='text' 
+            type='text'
+            ref={name} 
             placeholder='Full Name' 
             className='m-2 p-2 bg-gray-700 h-[50px] w-[280px] rounded-[4px]'>
             </input> )}
