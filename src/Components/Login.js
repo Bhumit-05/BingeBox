@@ -4,13 +4,11 @@ import { DP_URL, LOGIN_BG_URL } from '../utils/Constants';
 import Validate from '../utils/Validate';
 import {auth} from '../utils/Firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const Login = () => {
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const dispatch = useDispatch();;
     const [isSignUp, setIsSignUp] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -32,7 +30,6 @@ const Login = () => {
                   })
                   .then(() => {
                     dispatch();
-                    navigate("/browse");
                   })
                   .catch((error) => {
                   });
@@ -51,7 +48,6 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
