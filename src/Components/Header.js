@@ -1,15 +1,25 @@
-import React, { useEffect } from 'react'
-import { DP_URL, NETFLIX_LOGO } from '../utils/Constants';
+import React, { useEffect, useState } from 'react'
+import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from '../utils/Constants';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/UserSlice';
+import { toggleGptSearchView } from '../utils/GptSlice';
 
 const Header = () => {
   const user = useSelector(store => store.user);
+  const showGptSearch = useSelector(store => store.gpt.showGptSearch);
   const navigate= useNavigate();
   const dispatch=useDispatch();
+  const [dropDown, setDropDown] = useState(0);
+  const handleDropDown = () => {
+    setDropDown(!dropDown);
+  }
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  }
 
   useEffect(()=> {
     const unsubscribe =onAuthStateChanged(auth, (user) => {
@@ -44,18 +54,35 @@ const Header = () => {
   }
 
   return (
-    <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between'>
-      <img className='w-[190px] ml-[345px] mt-[4px]' src={NETFLIX_LOGO} alt="Logo"></img>
+    <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between '>
+      <img className='w-[185px] h-[200px] ml-[100px] -mt-[55px]' src={NETFLIX_LOGO} alt="Logo"></img>
       {user && (<div className='flex'>
+
         <button 
-          className='mr-[50px] mt-[25px] pt-[8px] bg-black text-red-400 rounded-2xl w-[140px] pl-[10px] h-10 cursor-pointer hover:bg-white'>
-            {user.displayName}
+          className='mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] pl-[5px] h-10 cursor-pointer '
+          onClick={handleDropDown}>
+            👤 {user.displayName} 
         </button>
+
+        <select className='cursor-pointer bg-black border-custom-gold border-2 text-custom-gold mr-[60px] rounded-full w-[180px] h-10 mt-[25px] px-[10px]'>
+          {SUPPORTED_LANGUAGES.map(
+            lang => <option 
+            key={lang.identifier} 
+            value={lang.identifier}>
+              {lang.name}
+            </option>)}
+        </select>
+
         <button 
-          className='text-red-400 bg-black rounded-2xl w-20 h-10 mt-[25px] mr-[100px]'
+          className='bg-purple-600 border-purple-900 border-2 text-white rounded-full w-[180px] mt-[25px] mr-[60px] h-10 '
+          onClick={handleGptSearchClick}>{showGptSearch? "Browse" : "֎ GPT Search"}
+        </button>
+
+        <button 
+          className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] mr-[60px]'
           onClick={handleClick}
           >Sign out
-          </button>
+        </button>
       </div>)}
     </div>
   )
