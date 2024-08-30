@@ -1,5 +1,4 @@
 import React from 'react'
-import { INFO_ICON } from '../utils/Constants';
 
 const VideoTitle = ({title, overview}) => {
   return (
@@ -11,7 +10,7 @@ const VideoTitle = ({title, overview}) => {
                 ▶ Play
             </button>
             <button className='bg-gray-400 text-white mr-[10px] w-[130px] h-[50px] rounded-lg text-xl bg-opacity-30 ml-[10px]'>
-            ⓘ More Info
+              ⓘ More Info
             </button>
         </div>
     </div>

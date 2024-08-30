@@ -64,9 +64,9 @@ const Login = () => {
     return (
     <div><Header/>
         <div className='absolute'>
-            <img src={LOGIN_BG_URL} alt="bg"></img>
+            <img className='w-screen object-cover' src={LOGIN_BG_URL} alt="bg"></img>
         </div>
-        <form onSubmit={(e)=> e.preventDefault()} className='bg-black absolute w-[400px] mx-auto right-0 left-0  mt-[100px] h-[500px] text-white pl-[50px] bg-opacity-80'>
+        <form onSubmit={(e)=> e.preventDefault()} className='bg-black absolute w-[400px] rounded-xl mx-auto right-0 left-0  mt-[200px] h-[500px] text-white pl-[50px] bg-opacity-80'>
             <h1 
             className='text-3xl mt-[50px] ml-[5px] mb-[20px]'>
                 {isSignUp? "Sign Up" : "Sign In"}
@@ -104,7 +104,7 @@ const Login = () => {
             <h1 
             className='py-6 px-2 cursor-pointer' 
             onClick={toggleSignUp}>
-                {isSignUp? "Already a user? Sign In now." : "New to Netflix? Sign Up now."}
+                {isSignUp? "Already a user? Sign In now." : "New to BingeBox? Sign Up now."}
             </h1>
         </form>
     </div>

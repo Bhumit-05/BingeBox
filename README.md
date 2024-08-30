@@ -30,6 +30,6 @@
         -Movie suggestions
             -Movielists * N
             
--NetflixGPT
+-GPT
     -search bar
     -suggestions
