@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
-import { DP_URL, LOGIN_BG_URL } from '../utils/Constants';
+import {  LOGIN_BG_URL } from '../utils/Constants';
 import Validate from '../utils/Validate';
 import {auth} from '../utils/Firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -47,7 +47,6 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;

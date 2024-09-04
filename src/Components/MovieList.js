@@ -20,7 +20,7 @@ const MovieList = ({title, movies}) => {
       behavior: 'smooth'
     });
   };
-
+  console.log(movies);
 
   return (
     <div className='relative'>
@@ -28,7 +28,7 @@ const MovieList = ({title, movies}) => {
       <div className='pt-[50px] text-4xl  text-custom-gold font-thin font-sans ml-[35px]'><h1>{title}</h1></div>
       <div className='relative flex overflow-x-scroll no-scrollbar' ref={scrollContainerRef}>
         <div className='flex'>
-          {movies?.map(movie => <MovieCard key={movie.id} poster={movie.poster_path}/> )}
+          {movies?.map(picture => <MovieCard key={picture.id} movie={picture}/> )}
         </div>
       </div>
 
