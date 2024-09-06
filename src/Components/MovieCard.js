@@ -1,6 +1,5 @@
 import React from 'react'
 import { IMG_CDN_URL } from '../utils/Constants';
-import PageForMovie from './PageForMovie';
 import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({movie}) => {

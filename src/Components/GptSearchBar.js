@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import lang from '../utils/LanguageConstants';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_OPTIONS, GROQ_API_KEY } from '../utils/Constants';
 import Groq from "groq-sdk";

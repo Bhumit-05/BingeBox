@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { LOGO, SUPPORTED_LANGUAGES } from '../utils/Constants';
+import { LOGO } from '../utils/Constants';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/UserSlice';
 import { setGptFalse, toggleGptSearchView } from '../utils/GptSlice';
-import { changeLanguage } from '../utils/configSlice';
 import { setWatchlistTrue, toggleWatchlist } from '../utils/WatchlistSlice';
 
 const Header = () => {
@@ -20,10 +19,6 @@ const Header = () => {
 
   const handleDropDown = () => {
     setDropDown(!dropDown);
-  }
-
-  const handleLangChange = (e) => {
-    dispatch(changeLanguage(e.target.value));
   }
 
   const handleLogoClick = () => {
@@ -99,16 +94,6 @@ const Header = () => {
             onClick={handleWatchlistClick}
             >{watchlistButton? "Watchlist" : "Browse"}
         </button>
-
-        {showGptSearch && (<select className='cursor-pointer bg-black border-custom-gold border-2 text-custom-gold mr-[60px] rounded-full w-[180px] h-10 mt-[25px] px-[10px]'
-        onChange={handleLangChange}>
-          {SUPPORTED_LANGUAGES.map(
-            lang => <option 
-            key={lang.identifier} 
-            value={lang.identifier}>
-              {lang.name}
-            </option>)}
-        </select>)}
 
         <button 
           className='bg-purple-600 border-purple-900 border-2 text-white rounded-full w-[180px] mt-[25px] mr-[60px] h-10 '
