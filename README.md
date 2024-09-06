@@ -1,4 +1,4 @@
-# Netflix-GPT
+# BingeBox-GPT
 
 -Create React App
 -Configured TailwindCSS
