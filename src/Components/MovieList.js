@@ -20,7 +20,6 @@ const MovieList = ({title, movies}) => {
       behavior: 'smooth'
     });
   };
-  console.log(movies);
 
   return (
     <div className='relative'>

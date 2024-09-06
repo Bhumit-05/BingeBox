@@ -3,6 +3,7 @@ import Login from './Login';
 import Browse from './Browse';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Error from './Error';
+import PageForMovie from './PageForMovie';
 
 
 const Body = () => {
@@ -18,6 +19,11 @@ const Body = () => {
       element: <Browse/>,
       errorElement: <Error/>,
     },
+    {
+      path: "/movie/:id",
+      element: <PageForMovie/>,
+      errorElement: <Error/>,
+    }
   ]);
 
   return (

@@ -6,8 +6,8 @@ import useMovieVideo from '../hooks/useMovieVideo';
 
 const VideoBackground = ({movieId}) => {
 
-    const trailerKey = useSelector( store => store.movies?.trailerVideo?.key);
-    useMovieVideo(movieId);
+  const trailerKey = useSelector( store => store.movies?.trailerVideo?.key);
+  useMovieVideo(movieId);
 
   return (
     <div><iframe 

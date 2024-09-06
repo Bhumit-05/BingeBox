@@ -5,7 +5,7 @@ import { auth } from '../utils/Firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/UserSlice';
-import { toggleGptSearchView } from '../utils/GptSlice';
+import { setGptFalse, toggleGptSearchView } from '../utils/GptSlice';
 import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
@@ -23,6 +23,11 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   }
 
+  const handleLogoClick = () => {
+    dispatch(setGptFalse());
+    navigate("/");
+  }
+
   const handleClick = () => {
     signOut(auth).then(() => {
     }).catch((error) => {
@@ -31,6 +36,7 @@ const Header = () => {
   }
 
   const handleGptSearchClick = () => {
+    navigate("/")
     dispatch(toggleGptSearchView());
   }
 
@@ -46,7 +52,10 @@ const Header = () => {
             photoURL: photoURL
           })
         );
-        navigate("/browse");
+        // Only navigate to /browse if you're on the root ("/") path, so we can now go to pageForMovie with a header
+        if (window.location.pathname === "/"){
+          navigate("/browse");
+        }
         
       }
       else {
@@ -62,7 +71,7 @@ const Header = () => {
 
   return (
     <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between '>
-      <img className='w-[185px] h-[200px] ml-[100px] -mt-[48px] hover: cursor-pointer ' src={LOGO} alt="Logo"></img>
+      <img onClick={handleLogoClick} className='w-[185px] h-[200px] ml-[100px] -mt-[48px] hover: cursor-pointer ' src={LOGO} alt="Logo"></img>
       {user && (<div className='flex'>
 
         <button 
