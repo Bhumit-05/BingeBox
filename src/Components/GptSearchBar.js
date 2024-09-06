@@ -59,11 +59,11 @@ const GptSearchBar = () => {
           ref={searchText}
           type="text" 
           className='p-[16px] m-[16px] w-[840px] text-lg py-[10px]'
-          placeholder={lang[langKey].gptSearchPlaceholder}/>
+          placeholder="What would you like to watch today?"/>
         <button 
           className='py-[12px] px-4 bg-purple-500 text-white text-lg rounded-lg inline-block mr-auto ml-auto max-w-fit'
           onClick={handleGptSearchClick}>
-          {lang[langKey].search}
+          🔍Search
         </button>
       </form>
     </div>

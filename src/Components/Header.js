@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/UserSlice';
 import { setGptFalse, toggleGptSearchView } from '../utils/GptSlice';
 import { changeLanguage } from '../utils/configSlice';
+import { setWatchlistTrue, toggleWatchlist } from '../utils/WatchlistSlice';
 
 const Header = () => {
   const user = useSelector(store => store.user);
@@ -14,6 +15,8 @@ const Header = () => {
   const navigate= useNavigate();
   const dispatch=useDispatch();
   const [dropDown, setDropDown] = useState(0);
+  const watchlistButton = useSelector((state) => state.watchlist.watchlistButton);
+
 
   const handleDropDown = () => {
     setDropDown(!dropDown);
@@ -26,6 +29,16 @@ const Header = () => {
   const handleLogoClick = () => {
     dispatch(setGptFalse());
     navigate("/");
+    dispatch(setWatchlistTrue());
+  }
+
+  const handleWatchlistClick = () => {
+    dispatch(toggleWatchlist());
+    if (!watchlistButton){
+      navigate("/browse");
+    }
+    else navigate("/watchlist");
+    dispatch(setGptFalse());
   }
 
   const handleClick = () => {
@@ -38,6 +51,7 @@ const Header = () => {
   const handleGptSearchClick = () => {
     navigate("/")
     dispatch(toggleGptSearchView());
+    dispatch(setWatchlistTrue());
   }
 
   useEffect(()=> {
@@ -78,6 +92,12 @@ const Header = () => {
           className='mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] pl-[5px] h-10 cursor-pointer '
           onClick={handleDropDown}>
             👤 {user.displayName} 
+        </button>
+
+        <button 
+            className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] mr-[60px]'
+            onClick={handleWatchlistClick}
+            >{watchlistButton? "Watchlist" : "Browse"}
         </button>
 
         {showGptSearch && (<select className='cursor-pointer bg-black border-custom-gold border-2 text-custom-gold mr-[60px] rounded-full w-[180px] h-10 mt-[25px] px-[10px]'

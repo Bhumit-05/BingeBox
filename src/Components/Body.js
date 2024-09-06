@@ -4,6 +4,7 @@ import Browse from './Browse';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Error from './Error';
 import PageForMovie from './PageForMovie';
+import Watchlist from './Watchlist';
 
 
 const Body = () => {
@@ -22,6 +23,11 @@ const Body = () => {
     {
       path: "/movie/:id",
       element: <PageForMovie/>,
+      errorElement: <Error/>,
+    },
+    {
+      path: "/watchlist",
+      element: <Watchlist/>,
       errorElement: <Error/>,
     }
   ]);

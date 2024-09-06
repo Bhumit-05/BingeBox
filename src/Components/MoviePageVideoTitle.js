@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWatchList, removeMovieFromWatchlist } from '../utils/WatchlistSlice';
 
 const MoviePageVideoTitle = ({movie}) => {
+
+    const watchlist = useSelector(store => store.watchlist.watchlist);
+    const dispatch = useDispatch();
+    const [isPresent, setIsPresent] = useState(watchlist.some(picture => picture.id === movie.id));
+
+    const handleButtonClick = () => {
+        if(!isPresent){
+            dispatch(addToWatchList(movie));
+        }
+        else{
+            dispatch(removeMovieFromWatchlist(movie));
+        }
+        setIsPresent(!isPresent);
+    }
+
   return (
     <div className='pt-[450px] pb-[300px] pl-[70px] px-[20px] py-[20px] absolute bg-gradient-to-r from-black text-white'>
         <h1 className='text-5xl pb-[15px] font-bold'>{movie.title}</h1>
@@ -13,8 +30,13 @@ const MoviePageVideoTitle = ({movie}) => {
             <button className='bg-white text-black mr-[10px] w-[130px] h-[50px] rounded-lg text-xl hover:opacity-85'>
                 ▶ Play
             </button>
-            <button className='bg-gray-400 text-white mr-[10px] w-[130px] h-[50px] rounded-lg text-xl bg-opacity-30 ml-[10px]'>
+            <button className='bg-gray-400 text-white mr-[10px] w-[130px] h-[50px] rounded-lg text-xl bg-opacity-40 ml-[10px]'>
               ⓘ More Info
+            </button>
+            <button 
+                className='bg-gray-400 text-white mr-[10px] w-fit p-[10px] h-[50px] rounded-lg text-xl bg-opacity-40 ml-[10px]'
+                onClick={handleButtonClick}>
+                {!isPresent? "✙ Add to Watchlist" : "― Remove from watchlist"}
             </button>
         </div>
         

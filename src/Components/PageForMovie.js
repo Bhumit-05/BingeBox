@@ -9,7 +9,6 @@ import MoviePageVideoTitle from './MoviePageVideoTitle';
 const PageForMovie = () => {
     const location = useLocation();
     const { movie } = location.state;
-    console.log(movie);
     const movieId = movie.id;
     const dispatch = useDispatch();
     

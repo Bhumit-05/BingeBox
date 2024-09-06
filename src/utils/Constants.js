@@ -14,10 +14,14 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const PURPLE_BG = "https://cdn.pixabay.com/photo/2016/05/22/19/07/background-1409025_1280.png";
 
-export const INVERTED_BG = "https://i.imgur.com/5TVlpYk.png";
+export const INVERTED_PURPLE_BG = "https://i.imgur.com/5TVlpYk.png";
 
 export const SUPPORTED_LANGUAGES = [{identifier: "en", name: "English"}, {identifier: "hindi", name: "Hindi"}, {identifier: "spanish", name: "Spanish"}, {identifier: "french", name: "French"}]
 
 export const GROQ_API_KEY= "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";
+
+export const YELLOW_BG = "https://i.imgur.com/lK0MGB8.jpeg";
+
+export const INVERTED_YELLOW_BG = "https://i.imgur.com/GCnr9Fe.jpeg"
 
 
