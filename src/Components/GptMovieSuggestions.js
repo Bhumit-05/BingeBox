@@ -10,8 +10,8 @@ const GptMovieSuggestions = () => {
   if(!movies) return null;
 
   return (
-    <div className='mx-[450px] bg-black/70 text-white px-[80px] py-[16px] -mt-[280px] rounded-xl '>
-      <h1 className='ml-auto py-[40px] mr-auto max-w-fit text-4xl text-purple-200 font-extralight'>MOVIE SUGGESTIONS</h1>
+    <div className='mx-[450px] md:w-auto w-[385px] bg-black/70 text-white md:px-[80px] md:py-[16px] -mt-[280px] rounded-xl pt-[100px] '>
+      <h1 className=' md:py-[40px] py-[20px] mx-auto max-w-fit md:text-4xl text-3xl text-purple-200 font-extralight'>MOVIE SUGGESTIONS</h1>
       {movies.map((picture, index) => <SuggestionCard key={index} movie={picture[0]} />)}
     </div>
   )

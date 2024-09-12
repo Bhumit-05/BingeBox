@@ -51,13 +51,13 @@ const GptSearchBar = () => {
   }
 
   return (
-    <div className='m-[200px] p-[100px] '>
-      <form className='bg-black/60 ml-[150px] w-auto mt-[50px] inline-block rounded-xl pr-[15px]'
+    <div className='m-[200px] px-[100px] pt-[200px] md:p-[100px]   '>
+      <form className='bg-black/60 ml-[150px] md:w-auto mt-[50px] w-[385px] inline-block rounded-xl pr-[15px]'
       onSubmit={(e) => e.preventDefault()}>
         <input 
           ref={searchText}
           type="text" 
-          className='p-[16px] m-[16px] w-[840px] text-lg py-[10px]'
+          className='p-[16px] m-[16px] md:w-[840px] w-[235px] text-lg py-[10px]'
           placeholder="What would you like to watch today?"/>
         <button 
           className='py-[12px] px-4 bg-purple-500 text-white text-lg rounded-lg inline-block mr-auto ml-auto max-w-fit'

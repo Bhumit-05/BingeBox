@@ -79,29 +79,29 @@ const Header = () => {
 
 
   return (
-    <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between '>
-      <img onClick={handleLogoClick} className='w-[185px] h-[200px] ml-[100px] -mt-[48px] hover: cursor-pointer ' src={LOGO} alt="Logo"></img>
-      {user && (<div className='flex'>
+    <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between flex-col md:flex-row -space-y-[80px] md:space-y-0'>
+      <img onClick={handleLogoClick} className='w-[185px] mx-auto h-[200px] md:ml-[100px] -mt-[48px] hover: cursor-pointer ' src={LOGO} alt="Logo"></img>
+      {user && (<div className='flex-wrap md:flex-row justify-between md:ml-[18px] ml-[45px] pb-[100px] md:mx-0 '>
 
         <button 
-          className='mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] pl-[5px] h-10 cursor-pointer '
+          className='md:mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] mr-[30px] pl-[5px] h-10 cursor-pointer '
           onClick={handleDropDown}>
             👤 {user.displayName} 
         </button>
 
         <button 
-            className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] mr-[60px]'
+            className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] md:mr-[60px] '
             onClick={handleWatchlistClick}
             >{watchlistButton? "Watchlist" : "Browse"}
         </button>
 
         <button 
-          className='bg-purple-600 border-purple-900 border-2 text-white rounded-full w-[180px] mt-[25px] mr-[60px] h-10 '
+          className='bg-purple-600 border-purple-900 border-2 text-white rounded-full w-[180px] mt-[25px] md:mr-[60px] h-10 mr-[30px]'
           onClick={handleGptSearchClick}>{showGptSearch? "Browse" : "֎ GPT Search"}
         </button>
 
         <button 
-          className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] mr-[60px]'
+          className='border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] h-10 mt-[25px] md:mr-[60px]'
           onClick={handleClick}
           >Sign out
         </button>
