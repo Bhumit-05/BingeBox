@@ -13,13 +13,7 @@ const Header = () => {
   const showGptSearch = useSelector(store => store.gpt.showGptSearch);
   const navigate= useNavigate();
   const dispatch=useDispatch();
-  const [dropDown, setDropDown] = useState(0);
   const watchlistButton = useSelector((state) => state.watchlist.watchlistButton);
-
-
-  const handleDropDown = () => {
-    setDropDown(!dropDown);
-  }
 
   const handleLogoClick = () => {
     dispatch(setGptFalse());
@@ -84,8 +78,7 @@ const Header = () => {
       {user && (<div className='flex-wrap md:flex-row justify-between md:ml-[18px] ml-[45px] pb-[100px] md:mx-0 '>
 
         <button 
-          className='md:mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] mr-[30px] pl-[5px] h-10 cursor-pointer '
-          onClick={handleDropDown}>
+          className='md:mr-[60px] mt-[25px] border-custom-gold border-2 text-custom-gold bg-black rounded-full w-[180px] mr-[30px] pl-[5px] h-10 cursor-pointer '>
             👤 {user.displayName} 
         </button>
 

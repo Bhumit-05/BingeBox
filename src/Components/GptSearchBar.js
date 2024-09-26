@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { API_OPTIONS, GROQ_API_KEY } from '../utils/Constants';
 import Groq from "groq-sdk";
 import {addGptMoviesResult} from "../utils/GptSlice";
@@ -7,8 +7,6 @@ import {addGptMoviesResult} from "../utils/GptSlice";
 const GptSearchBar = () => {
 
   const dispatch = useDispatch();
-
-  const langKey = useSelector(store => store.config.lang);
 
   const searchText = useRef(null);
 
